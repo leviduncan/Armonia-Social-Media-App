@@ -1,5 +1,5 @@
 import React from 'react'
-import { FaEnvelope } from 'react-icons/fa'
+import './ShowProfileButton.css'
 
 function ShowProfileButton({ handleShow }) {
   return (
@@ -7,7 +7,6 @@ function ShowProfileButton({ handleShow }) {
       
       <div className="profile-btn d-flex justify-content-between">
         <button className="btn btn-rose-lined btn-block" onClick={handleShow}>View Profile</button>
-        <button className="btn btn-rose-lined"><FaEnvelope color='#FFF' /></button>
       </div>
     </>
   )

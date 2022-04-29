@@ -1,106 +1,68 @@
 import React, { useEffect, useState } from 'react'
-import { AppProvider } from './context/AppContext'
-import './App.css'
+import GetAllUsers from './components/GetAllUsers'
 import SideMenu from './components/SideMenu'
-import Header from './components/Header'
-import GetAll from './components/GetAll'
+import './App.css'
 
-function App() {
-    const [data, setData] = useState({})
+const App = () => {
+
+    const url = 'https://randomuser.me/api/?results=40'
+    const [userData, setUserData] = useState([])
+    const [cartItems, setCartItems] = useState([])
     const [filteredData, setFilteredData] = useState(null)
-    const [gender, setGender] = useState("female")
-    const [totalUsers, setTotalUsers] = useState(60)
-    const [loading, setLoading] = useState(false)
-    const [total, setTotal] = useState(0)
-    const [cart, setCart] = useState([])
-    const [cartItemSwitch, setCartItemSwitch] = useState(1)
 
-    const handleCartItemSwitch = (switchVal) => {
-      if (switchVal === 1){
-        setCartItemSwitch(0)
-      } else {
-        setCartItemSwitch(1)
-      }
-      console.log(cartItemSwitch);
+    const fetchUserData = async () => {
+        const resp = await fetch(url)
+        const users = await resp.json()
+        setUserData(users.results)
+        console.log(users.results);
     }
-
-    const fillCart = (item) => {
-      const people = {
-        id: item.id,
-        image: item.picture.medium,
-        firstName: item.name.first,
-        lastName: item.name.last
-      }
-
-      setCart(cart => [...cart, people])
-      console.log(cart);
-    }
-
-    const handleChange = (e) => {
-      setGender(e.target.value)
-    }
-
-    const calculateTotal = (val) => {
-      setTotal(val)
-    }
-
     useEffect(() => {
-        fetch(`https://randomuser.me/api/?results=${totalUsers}`)
-          .then((response) => response.json())
-          .then(setData)
-      }, [])
+        fetchUserData()
+    }, [])
 
-    useEffect(() => {
-        if (!data.results) {
-            return
+
+
+    const onAdd = (person) => {
+        const exist = cartItems.find((x) => x.id === person.id);
+        if (exist) {
+            setCartItems(
+                cartItems.map((x) =>
+                    x.id === person.id ? { ...exist, qty: exist.qty + 1 } : x
+                )
+            );
+        } else {
+            setCartItems([...cartItems, { ...person, qty: 1 }]);
         }
+    };
 
-        if (!gender) {
-            setFilteredData(null);
-            return;
+
+    const onRemove = (person) => {
+        const exist = cartItems.find((x) => x.id === person.id);
+        if (exist.qty === 1) {
+            setCartItems(cartItems.filter((x) => x.id !== person.id));
+        } else {
+            setCartItems(
+                cartItems.map((x) =>
+                    x.id === person.id ? { ...exist, qty: exist.qty - 1 } : x
+                )
+            );
         }
+    };
 
-        const searchResults = data.results.filter((e) => e.gender === gender);
-        setFilteredData(searchResults);
- }, [gender])
-
-
-
-  return (
-    <AppProvider value={{
-      gender,
-      data,
-      filteredData,
-      loading,
-      total,
-      cart,
-      cartItemSwitch,
-      fillCart,
-      handleChange,
-      calculateTotal,
-      handleCartItemSwitch
-    }}>
-      <div className="d-flex flex-row">
-      {data.results ? 
-        (<div>
-          <div className="d-flex flex-row">
-            <div className="side-menu" >
-              {/* SideMenu */}
-                <SideMenu />
-              {/* End SideMenu */}
-            </div>
-            <div className="content col">
-              {/* Content */}
-                <Header />
-                <GetAll />
-              {/* End Content */}
-            </div>
-          </div>            
-            </div>) :
-            (<div>loading...</div>)
-        }
-    </div>
-    </AppProvider>
-  )
+    return (
+        <div className="app-layout">
+            <SideMenu
+                cartItems={cartItems}
+                onRemove={onRemove}
+            />
+            <GetAllUsers
+                userData={userData}
+                cartItems={cartItems}
+                onAdd={onAdd}
+                onRemove={onRemove}
+            />
+        </div>
+    )
 }
+
 export default App

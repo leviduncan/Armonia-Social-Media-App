@@ -1,0 +1,129 @@
+
+.user-grid__card {
+    border-radius: 1.6rem;
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0);
+    width: 100%;
+    transition: all 0.5s ease;
+}
+
+.user-grid__card:hover {
+    margin: -10px 0 10px;
+    transition: all 0.5s ease;
+    box-shadow: 5px 5px 10px#1c26418a;
+}
+
+.user-grid__card__img {
+    border-radius: 1.2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.user-grid__card::before {
+    content: "";
+    background-image: linear-gradient( rgba(0, 0, 0, 0),  rgba(0, 0, 0, 0.727));
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+}
+
+.user-grid__card:hover::before {
+    content: "";
+    background-image: linear-gradient( rgba(0, 0, 0, 0.767),  rgba(0, 0, 0, 0.767));
+}
+
+
+.user-grid__card__footer {
+    font-size: 1.5rem;
+    margin-top: -50px;
+    margin-bottom: 0px;
+    color: #fff;
+    padding: .5rem 1rem;
+    border-bottom-right-radius: 1.2rem;
+    border-bottom-left-radius: 1.2rem;
+    position: relative;
+    z-index: 3;
+}
+
+.user-grid__card__footer h5 {
+    color: #fff;
+    position: relative;
+    bottom: 0px;
+    z-index: 10;
+}
+
+.mk-rounded {
+    border-radius: 50%;
+    border: solid 2px #ccc;
+  }
+  
+  .rose-border {
+    border: solid 10px #ff675d;
+  }
+
+  .user-grid__profile {
+      border: 1px red solid;
+      position: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      right: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 100;
+  }
+
+  .modal-content {
+    background: rgba(255, 255, 255, 0.672);
+    text-transform: uppercase;
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.637);
+    position: absolute;
+    z-index: 200;
+  }
+
+  .hide {
+    display: none;
+  }
+  
+  .show {
+    display: flex;
+  }
+
+  .screen-overlay {
+    position: fixed;
+    box-sizing: border-box;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.85);
+    overflow: auto;
+    z-index: 150;
+
+}
+  
+
+@media (min-width: 425px) {
+    .user-grid__card {
+        width: 45%;
+    }
+    
+}
+
+@media (min-width: 768px) {
+    .user-grid__card {
+        width: 30%;
+    }
+    
+}
+
+@media (min-width: 1024px) {
+    .user-grid__card {
+        width: 20%;
+    }
+    
+}

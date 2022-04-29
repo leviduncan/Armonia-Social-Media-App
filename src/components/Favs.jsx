@@ -1,44 +1,27 @@
-import React, { useContext, useState } from 'react'
 import { FaRegHeart, FaHeart } from 'react-icons/fa'
-import AppContext from '../context/AppContext'
+import './Favs.css'
 
-function Favs({ results }) {
-  let { total, calculateTotal, fillCart, handleCartItemSwitch } = useContext(AppContext)
+const Favs = (props) => {
+    const { heartMe, showFav, user, onAdd, onRemove } = props
 
-  const [favNum, setFavNum] = useState(0)
-  const [showFav, setShowFav] = useState(false)
-
-  const heartMe = () => {
-    if(showFav === false){
-      setShowFav(true)
-    } else {
-      setShowFav(false)
-    }
-  }
-
-  const handleClick = () => {
-    let val
-    let switchVal
-    if(favNum === 1){
-      val = total - 1
-      switchVal = 0
-      setFavNum(0)
-    } else {
-      val = (total + 1)
-      switchVal = 1
-      setFavNum(1)
-    }
-      heartMe()
-      calculateTotal(val)
-      fillCart(results)
-      handleCartItemSwitch(switchVal)
+    const addPerson = () => {
+        onAdd(user)
+        heartMe()
     }
 
-  return (
-    <>
-     {showFav === false ? <FaRegHeart className="favs" onClick={handleClick}/> : <FaHeart className="favs" onClick={handleClick}/>}
-    </>
-  )
+    const removePerson = () => {
+        onRemove(user)
+        heartMe()
+    }
+
+
+    return (
+        <div>
+            {showFav === false
+                ? <FaRegHeart className="favs" onClick={addPerson} />
+                : <FaHeart className="favs" onClick={removePerson} />}
+        </div>
+    )
 }
 
 export default Favs

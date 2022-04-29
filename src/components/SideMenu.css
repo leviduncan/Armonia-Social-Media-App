@@ -1,0 +1,39 @@
+.side-menu {
+    background-color: #313746;
+    color: #fff;
+    width: 20rem !important;
+    padding: 20px;
+}
+
+.side-menu__person {
+    transition: all 0.5s ease;
+}
+
+.side-menu hr {
+    background: #5b6580;
+}
+
+.side-menu__image {
+    border-radius: 50%;
+    margin: 0 8px 8px 0;
+    border: solid 2px #fff;
+    width: 40px;
+}
+
+.side-menu__remove {
+    padding: 5px 10px;
+    margin-left: 8px;
+    transition: all 0.5s ease;
+}
+
+.side-menu__remove:hover {
+    cursor: pointer;
+    background: #ffffff56;
+    transition: all 0.5s ease;
+}
+
+@media (max-width: 768px) {
+    .side-menu {
+        display: none;
+    }
+}

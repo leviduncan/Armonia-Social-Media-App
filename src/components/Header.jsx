@@ -1,11 +1,11 @@
-import React from 'react'
+import './Header.css'
 
-function Header() {
-  return (
-    <div className="header">
-      <h1>People Are Waiting To Meet You</h1>
-    </div>
-  )
+const Header = () => {
+    return (
+        <div className="header-banner">
+            <h1>Discover New Friends</h1>
+        </div>
+    )
 }
 
 export default Header
