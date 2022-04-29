@@ -1,7 +1,10 @@
 <h1>Armonia Social Media App</h1>
 
 <h2>Objective:</h2>
-<p>To provide a way for single people to find and interact with other single people with the same interests in their community</p>
+<p>To provide a way for people to find new friends and interact with other people with the same interests in the global community</p>
+
+<h2>Status:</h2>
+<p>This is a personal project that is still a work in progress</p>
 
 <h2>Roles/ Users:</h2>
 <ul>
@@ -71,4 +74,8 @@
 <li>Backend: Node Js</li>
 <li>Database: MongoDb</li>
 <li>CI/ CD Host: Netlify</li>
+<<<<<<< HEAD
 </ul>
+=======
+</ul>
+>>>>>>> 1a7b40b96cb9e81e4180c2c65e05f0473df8e90b

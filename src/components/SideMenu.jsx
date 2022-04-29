@@ -15,7 +15,7 @@ const SideMenu = (props) => {
                 {cartItems.length === 0 && <div>Cart is empty</div>}
                 {cartItems.map((item) => (
                     <>
-                        <div className="d-flex align-items-center side-menu__person">
+                        <div key={item.login.uuid} className="d-flex align-items-center side-menu__person">
                             <img className="side-menu__image" src={item.picture.thumbnail} alt={`${item.name.first} ${item.name.last}`} />
                             <div>{item.name.first} {item.name.last}</div>
                             <div className="side-menu__remove" onClick={() => onRemove(item)}> - </div>
