@@ -7,6 +7,19 @@
 
 .side-menu__person {
     transition: all 0.5s ease;
+    animation: fadein 1.5s;
+    position: relative;
+}
+
+@keyframes fadein {
+    from {
+        opacity:0;
+        top:-8px;
+    }
+    to {
+        opacity:1;
+        top:0px;
+    }
 }
 
 .side-menu hr {
@@ -30,6 +43,7 @@
     cursor: pointer;
     background: #ffffff56;
     transition: all 0.5s ease;
+    border-radius: 5px;
 }
 
 @media (max-width: 768px) {
