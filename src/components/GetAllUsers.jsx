@@ -7,7 +7,6 @@ const GetAllUsers = (props) => {
     return (
         <div className="container-fluid">
             <Header />
-            <div style={{ marginLeft:'20rem' }}>{user}</div>
             <div className="user-grid">
                 {userData.map((user) => {
                     return (

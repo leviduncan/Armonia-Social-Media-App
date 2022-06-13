@@ -9,10 +9,9 @@ const App = () => {
 
     const [userData, setUserData] = useState([])
     const [cartItems, setCartItems] = useState([])
-    const [filteredData, setFilteredData] = useState(null)
-    const [totalUsers, setTotalUsers] = useState(20)
+    const [totalUsers, setTotalUsers] = useState(40)
     const [currentPage, setCurrentPage] = useState(1)
-    const [usersPerPage, setUsersPerPage] = useState(5)
+    const [usersPerPage, setUsersPerPage] = useState(8)
 
     const fetchUserData = async () => {
         const url = `https://randomuser.me/api/?results=${totalUsers}`
@@ -74,9 +73,7 @@ const App = () => {
                     onAdd={onAdd}
                     onRemove={onRemove}
                     user={indexOfLastUser}
-                    usersPerPage={usersPerPage}
-                    totalUsers={userData.length}
-                    paginate={paginate}
+
                 />
 
             </div>
