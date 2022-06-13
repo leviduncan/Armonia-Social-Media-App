@@ -8,7 +8,7 @@ const Pagination = ({ usersPerPage, totalUsers, paginate }) => {
     }
 
     return (
-        <div className="d-flex justify-content-center mt-3">
+        <div className="d-flex justify-content-center mt-3" style={{ marginLeft: '20rem' }}>
             <div className="nav">
                 <ul className="pagination">
                     {pageNumbers.map(number => (
