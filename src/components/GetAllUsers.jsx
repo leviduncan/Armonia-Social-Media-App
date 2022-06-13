@@ -3,10 +3,11 @@ import Header from './Header'
 import UserCard from './UserCard'
 
 const GetAllUsers = (props) => {
-    const { userData, onAdd, onRemove } = props
+    const { userData, onAdd, onRemove, user } = props
     return (
         <div className="container-fluid">
             <Header />
+            <div style={{ marginLeft:'20rem' }}>{user}</div>
             <div className="user-grid">
                 {userData.map((user) => {
                     return (
