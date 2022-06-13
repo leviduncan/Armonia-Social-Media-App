@@ -1,6 +1,5 @@
 import './SideMenu.css'
 import { FaHeart } from 'react-icons/fa'
-import { MdDelete } from 'react-icons/md'
 
 const SideMenu = (props) => {
     const { cartItems, onRemove } = props;
@@ -13,13 +12,13 @@ const SideMenu = (props) => {
             <div>Favorites: {cartItems.length} </div>
             <hr />
             <div>
-                {cartItems.length === 0 && <div>Cart is empty</div>}
+                {cartItems.length === 0 && <div>Your Favorites list is empty</div>}
                 {cartItems.map((item) => (
                     <>
                         <div key={item.login.uuid} className="d-flex align-items-center side-menu__person">
                             <img className="side-menu__image" src={item.picture.thumbnail} alt={`${item.name.first} ${item.name.last}`} />
                             <div>{item.name.first} {item.name.last}</div>
-                            <div className="side-menu__remove" onClick={() => onRemove(item)}> <MdDelete color='#FF675D' /> </div>
+                            
                         </div>
 
                     </>

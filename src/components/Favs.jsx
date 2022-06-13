@@ -18,8 +18,8 @@ const Favs = (props) => {
     return (
         <div>
             {showFav === false
-                ? <FaRegHeart className="favs" onClick={addPerson} />
-                : <FaHeart className="favs" onClick={removePerson} />}
+                ? <FaRegHeart className="favs tool-tip-add" onClick={addPerson} />
+                : <FaHeart className="favs tool-tip-remove" onClick={removePerson} />}
         </div>
     )
 }
